@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30-Day Sleep Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            padding-bottom: 100px; /* Create space for the footer */
+        }
+
+        header {
+            background-color: #92825e;
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #ffaa00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #ffaa00;
+        }
+
+        .calendar-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: none; /* Initially hidden */
+        }
+
+        .day {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #92825e;
+            border-radius: 15px;
+            height: 100px;
+            font-size: 0.8em; /* Smaller font size for text */
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .day:hover {
+            background-color: #ffaa00;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .day.active {
+            background-color: #352b10;
+            color: white;
+        }
+
+        .day span {
+            display: none;
+            font-size: 1em;
+            padding-top: 10px;
+        }
+
+        .day.active span {
+            display: block;
+        }
+
+        footer {
+            background-color: #92825e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>30-Day Sleep Challenge</h1>
+    <p>Join the challenge to improve your sleep and well-being in just 30 days!</p>
+</header>
+
+<div class="cta-container" id="cta-container">
+    <button class="cta-btn" onclick="joinChallenge()">Join the Challenge Now!</button>
+</div>
+
+<div class="calendar-container" id="calendar">
+    <!-- 30 Days of Challenges -->
+    <div class="day" id="day1" onclick="revealChallenge(1)">1 <span>Challenge: Reduce screen time by 15 minutes before bed.</span></div>
+    <div class="day" id="day2" onclick="revealChallenge(2)">2 <span>Challenge: Try a 5-minute breathing exercise before sleep.</span></div>
+    <div class="day" id="day3" onclick="revealChallenge(3)">3 <span>Challenge: Set a regular bedtime 30 minutes earlier.</span></div>
+    <div class="day" id="day4" onclick="revealChallenge(4)">4 <span>Challenge: No phone 30 minutes before sleep.</span></div>
+    <div class="day" id="day5" onclick="revealChallenge(5)">5 <span>Challenge: Drink chamomile tea to help relax.</span></div>
+    <div class="day" id="day6" onclick="revealChallenge(6)">6 <span>Challenge: Write down 3 things you're grateful for before bed.</span></div>
+    <div class="day" id="day7" onclick="revealChallenge(7)">7 <span>Challenge: Read a book instead of using a screen.</span></div>
+    <div class="day" id="day8" onclick="revealChallenge(8)">8 <span>Challenge: Set an alarm to remind you to unwind.</span></div>
+    <div class="day" id="day9" onclick="revealChallenge(9)">9 <span>Challenge: Avoid caffeine after 3 PM.</span></div>
+    <div class="day" id="day10" onclick="revealChallenge(10)">10 <span>Challenge: Practice mindfulness for 10 minutes before bed.</span></div>
+    <div class="day" id="day11" onclick="revealChallenge(11)">11 <span>Challenge: Sleep in complete darkness for better quality rest.</span></div>
+    <div class="day" id="day12" onclick="revealChallenge(12)">12 <span>Challenge: Try a warm bath before sleep.</span></div>
+    <div class="day" id="day13" onclick="revealChallenge(13)">13 <span>Challenge: Turn off all electronics 45 minutes before bed.</span></div>
+    <div class="day" id="day14" onclick="revealChallenge(14)">14 <span>Challenge: Focus on deep breathing as you fall asleep.</span></div>
+    <div class="day" id="day15" onclick="revealChallenge(15)">15 <span>Challenge: Practice progressive muscle relaxation.</span></div>
+    <div class="day" id="day16" onclick="revealChallenge(16)">16 <span>Challenge: Avoid heavy meals 2 hours before bed.</span></div>
+    <div class="day" id="day17" onclick="revealChallenge(17)">17 <span>Challenge: Write a "to-do" list for the next day to clear your mind.</span></div>
+    <div class="day" id="day18" onclick="revealChallenge(18)">18 <span>Challenge: Dim the lights 1 hour before sleep.</span></div>
+    <div class="day" id="day19" onclick="revealChallenge(19)">19 <span>Challenge: Try aromatherapy with lavender essential oil.</span></div>
+    <div class="day" id="day20" onclick="revealChallenge(20)">20 <span>Challenge: Meditate for 10 minutes before bed.</span></div>
+    <div class="day" id="day21" onclick="revealChallenge(21)">21 <span>Challenge: Keep a consistent wake-up time, even on weekends.</span></div>
+    <div class="day" id="day22" onclick="revealChallenge(22)">22 <span>Challenge: Turn off all bright lights after 7 PM.</span></div>
+    <div class="day" id="day23" onclick="revealChallenge(23)">23 <span>Challenge: Try a light stretching routine before bed.</span></div>
+    <div class="day" id="day24" onclick="revealChallenge(24)">24 <span>Challenge: No phone in the bedroom.</span></div>
+    <div class="day" id="day25" onclick="revealChallenge(25)">25 <span>Challenge: Set a wind-down routine 30 minutes before bed.</span></div>
+    <div class="day" id="day26" onclick="revealChallenge(26)">26 <span>Challenge: Avoid napping in the afternoon.</span></div>
+    <div class="day" id="day27" onclick="revealChallenge(27)">27 <span>Challenge: Avoid checking the time in the middle of the night.</span></div>
+    <div class="day" id="day28" onclick="revealChallenge(28)">28 <span>Challenge: Try visualization to relax before sleep.</span></div>
+    <div class="day" id="day29" onclick="revealChallenge(29)">29 <span>Challenge: Set a goal to go to bed earlier each night.</span></div>
+    <div class="day" id="day30" onclick="revealChallenge(30)">30 <span>Challenge: Celebrate your success and plan your next sleep goal!</span></div>
+</div>
+
+<footer>
+    <p>&copy; 2024 30-Day Better Sleep Challenge | <a href="https://www.example.com/contact" style="color: white;">Contact Us</a></p>
+</footer>
+
+<script>
+    function revealChallenge(day) {
+        const dayElement = document.getElementById('day' + day);
+        dayElement.classList.toggle('active');
+    }
+
+    function joinChallenge() {
+        const calendar = document.getElementById('calendar');
+        const ctaContainer = document.getElementById('cta-container');
+        
+        // Hide the Join button after click
+        ctaContainer.style.display = 'none';
+
+        // Show the calendar
+        calendar.style.display = 'grid';
+    }
+</script>
+
+</body>
+</html>
